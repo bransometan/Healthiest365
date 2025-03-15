@@ -3,38 +3,215 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Healthy365 AI Meal Planner</title>
+    <title>Nutri365</title>
   </head>
   <body>
-    <h1>Welcome to the Healthy365 AI Meal Planner</h1>
+    <h1>Welcome to Nutri365</h1>
+
+    <!-- Health Information Form -->
+    <form id="health-info-form">
+      <h3>Enter Your Health Information</h3>
+
+      <!-- Age -->
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="1" max="120" required />
+      <br />
+
+      <!-- Gender -->
+      <label for="gender">Gender:</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select your gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <br />
+
+      <!-- Weight -->
+      <label for="weight">Weight (kg):</label>
+      <input
+        type="number"
+        id="weight"
+        name="weight"
+        min="1"
+        max="300"
+        required
+      />
+      <br />
+
+      <!-- Height -->
+      <label for="height">Height (cm):</label>
+      <input
+        type="number"
+        id="height"
+        name="height"
+        min="50"
+        max="250"
+        required
+      />
+      <br />
+
+      <!-- Health Conditions -->
+      <label for="health_conditions"
+        >Select any existing health conditions:</label
+      >
+      <br />
+      <input
+        type="checkbox"
+        id="diabetes"
+        name="health_conditions"
+        value="diabetes"
+      />
+      <label for="diabetes">Diabetes</label>
+      <br />
+      <input
+        type="checkbox"
+        id="high_blood_pressure"
+        name="health_conditions"
+        value="high_blood_pressure"
+      />
+      <label for="high_blood_pressure">High Blood Pressure</label>
+      <br />
+      <input
+        type="checkbox"
+        id="heart_disease"
+        name="health_conditions"
+        value="heart_disease"
+      />
+      <label for="heart_disease">Heart Disease</label>
+      <br />
+      <input
+        type="checkbox"
+        id="high_cholesterol"
+        name="health_conditions"
+        value="high_cholesterol"
+      />
+      <label for="high_cholesterol">High Cholesterol</label>
+      <br />
+
+      <!-- Include Health Consideration -->
+      <label for="include_health">Include this information in planning:</label>
+      <input type="checkbox" id="include_health" name="include_health" />
+      <br />
+
+      <!-- Submit Button -->
+      <button type="submit">Save Health Information</button>
+    </form>
+
+    <div id="health-info-result"></div>
+    <br />
 
     <!-- Meal Suggestion Form -->
     <form id="meal-suggestion-form">
       <h3>Get a Meal Suggestion</h3>
-      <label for="preferences">Enter your food preferences:</label>
-      <input type="text" id="preferences" name="preferences" required />
+
+      <!-- Food Preferences -->
+      <label for="preferences">Select your food preferences:</label>
+      <select id="preferences" name="preferences" required>
+        <option value="">Select your preference</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+        <option value="pescatarian">Pescatarian</option>
+        <option value="omnivore">Omnivore</option>
+        <option value="keto">Keto</option>
+        <option value="paleo">Paleo</option>
+        <option value="low-carb">Low Carb</option>
+      </select>
       <br />
-      <label for="dietary_restrictions">Enter any dietary restrictions:</label>
+
+      <!-- Dietary Restrictions -->
+      <label for="dietary_restrictions">Select any dietary restrictions:</label>
+      <br />
       <input
-        type="text"
-        id="dietary_restrictions"
+        type="checkbox"
+        id="gluten_free"
         name="dietary_restrictions"
-        required
+        value="gluten_free"
       />
+      <label for="gluten_free">Gluten-Free</label>
       <br />
-      <label for="goal"
-        >Enter your health goal (e.g., weight loss, muscle gain):</label
-      >
-      <input type="text" id="goal" name="goal" required />
+      <input
+        type="checkbox"
+        id="dairy_free"
+        name="dietary_restrictions"
+        value="dairy_free"
+      />
+      <label for="dairy_free">Dairy-Free</label>
+      <br />
+      <input
+        type="checkbox"
+        id="nut_free"
+        name="dietary_restrictions"
+        value="nut_free"
+      />
+      <label for="nut_free">Nut-Free</label>
+      <br />
+      <input
+        type="checkbox"
+        id="soy_free"
+        name="dietary_restrictions"
+        value="soy_free"
+      />
+      <label for="soy_free">Soy-Free</label>
+      <br />
+      <input
+        type="checkbox"
+        id="egg_free"
+        name="dietary_restrictions"
+        value="egg_free"
+      />
+      <label for="egg_free">Egg-Free</label>
+      <br />
+
+      <!-- Health Goals -->
+      <label for="goal">Select your health goal:</label>
+      <select id="goal" name="goal" required>
+        <option value="">Select your goal</option>
+        <option value="weight_loss">Weight Loss</option>
+        <option value="muscle_gain">Muscle Gain</option>
+        <option value="maintenance">Maintenance</option>
+        <option value="energy_boost">Energy Boost</option>
+        <option value="balanced_diet">Balanced Diet</option>
+      </select>
+      <br />
+
+      <!-- Meal Type -->
+      <label for="meal_type">Select meal type:</label>
+      <select id="meal_type" name="meal_type" required>
+        <option value="">Select meal type</option>
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+        <option value="snack">Snack</option>
+        <option value="dessert">Dessert</option>
+      </select>
+      <br />
+
+      <!-- Cuisine Preference -->
+      <label for="cuisine">Select cuisine preference:</label>
+      <select id="cuisine" name="cuisine" required>
+        <option value="">Select cuisine</option>
+        <option value="asian">Asian</option>
+        <option value="mediterranean">Mediterranean</option>
+        <option value="italian">Italian</option>
+        <option value="mexican">Mexican</option>
+        <option value="american">American</option>
+        <option value="indian">Indian</option>
+      </select>
+      <br />
+
+      <!-- Submit Button -->
       <button type="submit">Get Meal Suggestion</button>
     </form>
+
+    <!-- Meal Suggestion Result -->
     <div id="meal-suggestion-result"></div>
     <br />
 
     <!-- Nutritional Analysis Form -->
     <form id="nutrition-analysis-form">
       <h3>Analyze Meal's Nutrition</h3>
-      <label for="meal">Enter meal description:</label>
+      <label for="meal">Search for a local dish:</label>
       <input type="text" id="meal" name="meal" required />
       <button type="submit">Analyze Nutrition</button>
     </form>
@@ -44,50 +221,246 @@
     <!-- Dietary Advice Form -->
     <form id="dietary-advice-form">
       <h3>Get Dietary Advice</h3>
-      <label for="current_diet">Enter your current diet description:</label>
-      <input type="text" id="current_diet" name="current_diet" required />
+
+      <!-- Current Diet Description -->
+      <label for="current_diet">Select your current diet type:</label>
+      <select id="current_diet" name="current_diet" required>
+        <option value="">Select your current diet</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+        <option value="pescatarian">Pescatarian</option>
+        <option value="omnivore">Omnivore</option>
+        <option value="keto">Keto</option>
+        <option value="paleo">Paleo</option>
+        <option value="low-carb">Low Carb</option>
+      </select>
       <br />
-      <label for="advice_goal">Enter your health goal:</label>
-      <input type="text" id="advice_goal" name="advice_goal" required />
+
+      <!-- Health Goals -->
+      <label for="advice_goal">Select your health goal:</label>
+      <select id="advice_goal" name="advice_goal" required>
+        <option value="">Select your health goal</option>
+        <option value="weight_loss">Weight Loss</option>
+        <option value="muscle_gain">Muscle Gain</option>
+        <option value="maintenance">Maintenance</option>
+        <option value="energy_boost">Energy Boost</option>
+        <option value="balanced_diet">Balanced Diet</option>
+      </select>
+      <br />
+
+      <!-- Activity Level -->
+      <label for="activity_level">Select your activity level:</label>
+      <select id="activity_level" name="activity_level" required>
+        <option value="">Select your activity level</option>
+        <option value="sedentary">Sedentary (Little or no exercise)</option>
+        <option value="lightly_active">
+          Lightly Active (Light exercise/sports 1-3 days a week)
+        </option>
+        <option value="moderately_active">
+          Moderately Active (Moderate exercise/sports 3-5 days a week)
+        </option>
+        <option value="very_active">
+          Very Active (Hard exercise/sports 6-7 days a week)
+        </option>
+        <option value="extra_active">
+          Extra Active (Very hard exercise/sports or a physical job)
+        </option>
+      </select>
+      <br />
+
+      <!-- Preferred Meal Types -->
+      <label for="preferred_meal_types">Select preferred meal types:</label>
+      <select
+        id="preferred_meal_types"
+        name="preferred_meal_types"
+        multiple
+        required
+      >
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+        <option value="snack">Snack</option>
+        <option value="dessert">Dessert</option>
+      </select>
+      <br />
+
+      <!-- Allergies or Intolerances -->
+      <label for="allergies">Select any allergies or intolerances:</label>
+      <br />
+      <input
+        type="checkbox"
+        id="gluten_allergy"
+        name="allergies"
+        value="gluten_free"
+      />
+      <label for="gluten_allergy">Gluten-Free</label>
+      <br />
+      <input
+        type="checkbox"
+        id="dairy_allergy"
+        name="allergies"
+        value="dairy_free"
+      />
+      <label for="dairy_allergy">Dairy-Free</label>
+      <br />
+      <input
+        type="checkbox"
+        id="nut_allergy"
+        name="allergies"
+        value="nut_free"
+      />
+      <label for="nut_allergy">Nut-Free</label>
+      <br />
+      <input
+        type="checkbox"
+        id="soy_allergy"
+        name="allergies"
+        value="soy_free"
+      />
+      <label for="soy_allergy">Soy-Free</label>
+      <br />
+      <input
+        type="checkbox"
+        id="egg_allergy"
+        name="allergies"
+        value="egg_free"
+      />
+      <label for="egg_allergy">Egg-Free</label>
+      <br />
+
+      <!-- Submit Button -->
       <button type="submit">Get Dietary Advice</button>
     </form>
+
+    <!-- Dietary Advice Result -->
     <div id="dietary-advice-result"></div>
     <br />
 
     <!-- Meal Plan Creation Form -->
+    <!-- Meal Plan Creation Form -->
     <form id="meal-plan-form">
       <h3>Create a Meal Plan</h3>
-      <label for="plan_preferences">Enter your food preferences:</label>
-      <input
-        type="text"
-        id="plan_preferences"
-        name="plan_preferences"
-        required
-      />
+
+      <!-- Food Preferences -->
+      <label for="plan_preferences">Select your food preferences:</label>
+      <select id="plan_preferences" name="plan_preferences" required>
+        <option value="">Select your preference</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+        <option value="pescatarian">Pescatarian</option>
+        <option value="omnivore">Omnivore</option>
+        <option value="keto">Keto</option>
+        <option value="paleo">Paleo</option>
+        <option value="low-carb">Low Carb</option>
+      </select>
       <br />
+
+      <!-- Dietary Restrictions -->
       <label for="plan_dietary_restrictions"
-        >Enter any dietary restrictions:</label
+        >Select any dietary restrictions:</label
       >
+      <br />
       <input
-        type="text"
-        id="plan_dietary_restrictions"
+        type="checkbox"
+        id="gluten_free_plan"
         name="plan_dietary_restrictions"
-        required
+        value="gluten_free"
       />
+      <label for="gluten_free_plan">Gluten-Free</label>
       <br />
-      <label for="plan_goal">Enter your health goal:</label>
-      <input type="text" id="plan_goal" name="plan_goal" required />
-      <br />
-      <label for="duration">Meal plan duration (e.g., 7 days):</label>
       <input
-        type="text"
-        id="duration"
-        name="duration"
-        value="7 days"
-        required
+        type="checkbox"
+        id="dairy_free_plan"
+        name="plan_dietary_restrictions"
+        value="dairy_free"
       />
+      <label for="dairy_free_plan">Dairy-Free</label>
+      <br />
+      <input
+        type="checkbox"
+        id="nut_free_plan"
+        name="plan_dietary_restrictions"
+        value="nut_free"
+      />
+      <label for="nut_free_plan">Nut-Free</label>
+      <br />
+      <input
+        type="checkbox"
+        id="soy_free_plan"
+        name="plan_dietary_restrictions"
+        value="soy_free"
+      />
+      <label for="soy_free_plan">Soy-Free</label>
+      <br />
+      <input
+        type="checkbox"
+        id="egg_free_plan"
+        name="plan_dietary_restrictions"
+        value="egg_free"
+      />
+      <label for="egg_free_plan">Egg-Free</label>
+      <br />
+
+      <!-- Health Goals -->
+      <label for="plan_goal">Select your health goal:</label>
+      <select id="plan_goal" name="plan_goal" required>
+        <option value="">Select your health goal</option>
+        <option value="weight_loss">Weight Loss</option>
+        <option value="muscle_gain">Muscle Gain</option>
+        <option value="maintenance">Maintenance</option>
+        <option value="energy_boost">Energy Boost</option>
+        <option value="balanced_diet">Balanced Diet</option>
+      </select>
+      <br />
+
+      <!-- Activity Level -->
+      <label for="activity_level_plan">Select your activity level:</label>
+      <select id="activity_level_plan" name="activity_level_plan" required>
+        <option value="">Select your activity level</option>
+        <option value="sedentary">Sedentary (Little or no exercise)</option>
+        <option value="lightly_active">
+          Lightly Active (Light exercise/sports 1-3 days a week)
+        </option>
+        <option value="moderately_active">
+          Moderately Active (Moderate exercise/sports 3-5 days a week)
+        </option>
+        <option value="very_active">
+          Very Active (Hard exercise/sports 6-7 days a week)
+        </option>
+        <option value="extra_active">
+          Extra Active (Very hard exercise/sports or a physical job)
+        </option>
+      </select>
+      <br />
+
+      <!-- Cuisine Preference -->
+      <label for="plan_cuisine">Select preferred cuisines:</label>
+      <select id="plan_cuisine" name="plan_cuisine" multiple required>
+        <option value="asian">Asian</option>
+        <option value="mediterranean">Mediterranean</option>
+        <option value="italian">Italian</option>
+        <option value="mexican">Mexican</option>
+        <option value="american">American</option>
+        <option value="indian">Indian</option>
+      </select>
+      <br />
+
+      <!-- Meal Types -->
+      <label for="meal_types_plan">Select preferred meal types:</label>
+      <select id="meal_types_plan" name="meal_types_plan" multiple required>
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+        <option value="snack">Snack</option>
+        <option value="dessert">Dessert</option>
+      </select>
+      <br />
+
+      <!-- Submit Button -->
       <button type="submit">Create Meal Plan</button>
     </form>
+
+    <!-- Meal Plan Result -->
     <div id="meal-plan-result"></div>
     <br />
 
@@ -104,7 +477,11 @@
       />
       <button type="submit">Upload and Analyze</button>
     </form>
-    <img id="image-preview" style="max-width: 300px; display: none;" alt="Food Image Preview" />
+    <img
+      id="image-preview"
+      style="max-width: 300px; display: none"
+      alt="Food Image Preview"
+    />
     <div id="image-analysis-result"></div>
     <br />
 
@@ -124,10 +501,38 @@
           event.preventDefault();
 
           const data = {};
-          inputData.forEach((id) => {
-            const inputField = document.getElementById(id);
-            data[id] = inputField.value;
+          inputData.forEach((idOrName) => {
+            const inputField = document.getElementById(idOrName);
+
+            if (!inputField) {
+              const checkboxes = document.querySelectorAll(
+                `input[name="${idOrName}"]:checked`
+              );
+              if (checkboxes.length > 0) {
+                data[idOrName] = Array.from(checkboxes).map(
+                  (checkbox) => checkbox.value
+                );
+              } else {
+                console.warn(
+                  `Element with ID or name '${idOrName}' not found.`
+                );
+              }
+            } else if (inputField.type === "checkbox") {
+              data[idOrName] = inputField.checked ? inputField.value : "";
+            } else if (inputField.tagName === "SELECT" && inputField.multiple) {
+              data[idOrName] = Array.from(inputField.selectedOptions).map(
+                (option) => option.value
+              );
+            } else {
+              data[idOrName] = inputField.value;
+            }
           });
+
+          // Get health information if needed
+          const healthInfo = getHealthInfo();
+          if (healthInfo) {
+            data.health_info = healthInfo;
+          }
 
           console.log(data);
 
@@ -144,7 +549,6 @@
             if (result.error) {
               resultDiv.innerHTML = `<p style="color:red;">Error: ${result.error}</p>`;
             } else {
-              // Display the result
               resultDiv.innerHTML = `<p><strong>Result:</strong> ${JSON.stringify(
                 result
               )}</p>`;
@@ -155,65 +559,115 @@
         });
       }
 
-        // Function to handle image upload, display the image preview, and make API call
-  document.getElementById('food-image').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-      // Display the image preview
-      const preview = document.getElementById('image-preview');
-      const reader = new FileReader();
-      
-      reader.onload = function(e) {
-        preview.src = e.target.result;
-        preview.style.display = 'block'; // Show the image preview
-      };
-      
-      reader.readAsDataURL(file); // Convert the image file to a data URL
-    }
-  });
-  // Function to handle image upload and API call
-  document.getElementById('image-upload-form').addEventListener('submit', async (event) => {
-    event.preventDefault();
-    
-    const fileInput = document.getElementById('food-image');
-    const file = fileInput.files[0];
-    
-    // Read the image as Base64
-    const reader = new FileReader();
-    reader.onload = async function () {
-      const base64Image = reader.result.split(',')[1]; // Remove the base64 prefix
+      // Function to handle image upload, display the image preview, and make API call
+      document
+        .getElementById("food-image")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            // Display the image preview
+            const preview = document.getElementById("image-preview");
+            const reader = new FileReader();
 
-      try {
-        const response = await fetch('/api/image_analysis', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ image: base64Image })
+            reader.onload = function (e) {
+              preview.src = e.target.result;
+              preview.style.display = "block"; // Show the image preview
+            };
+
+            reader.readAsDataURL(file); // Convert the image file to a data URL
+          }
         });
-        const result = await response.json();
-        const resultDiv = document.getElementById('image-analysis-result');
+      // Function to handle image upload and API call
+      document
+        .getElementById("image-upload-form")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault();
 
-        if (result.error) {
-          resultDiv.innerHTML = `<p style="color:red;">Error: ${result.error}</p>`;
-        } else {
-          // Display the analysis result
-          resultDiv.innerHTML = `<p><strong>Nutrition Facts:</strong> ${JSON.stringify(result.nutritional_facts)}</p>`;
-        }
-      } catch (error) {
-        resultDiv.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+          const fileInput = document.getElementById("food-image");
+          const file = fileInput.files[0];
+
+          // Read the image as Base64
+          const reader = new FileReader();
+          reader.onload = async function () {
+            const base64Image = reader.result.split(",")[1]; // Remove the base64 prefix
+
+            try {
+              const response = await fetch("/api/image_analysis", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ image: base64Image }),
+              });
+              const result = await response.json();
+              const resultDiv = document.getElementById(
+                "image-analysis-result"
+              );
+
+              if (result.error) {
+                resultDiv.innerHTML = `<p style="color:red;">Error: ${result.error}</p>`;
+              } else {
+                // Display the analysis result
+                resultDiv.innerHTML = `<p><strong>Nutrition Facts:</strong> ${JSON.stringify(
+                  result.nutritional_facts
+                )}</p>`;
+              }
+            } catch (error) {
+              resultDiv.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
+            }
+          };
+
+          reader.readAsDataURL(file); // Convert image to Base64
+        });
+
+      // Save health information to local storage
+      document
+        .getElementById("health-info-form")
+        .addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          // Gather health data
+          const healthData = {
+            age: document.getElementById("age").value,
+            gender: document.getElementById("gender").value,
+            weight: document.getElementById("weight").value,
+            height: document.getElementById("height").value,
+            health_conditions: Array.from(
+              document.querySelectorAll(
+                'input[name="health_conditions"]:checked'
+              )
+            ).map((checkbox) => checkbox.value),
+            include_health: document.getElementById("include_health").checked,
+          };
+
+          // Save health information to localStorage
+          localStorage.setItem("healthInfo", JSON.stringify(healthData));
+
+          // Show a message based on the inclusion checkbox
+          const message = healthData.include_health
+            ? "Health information saved! It will be taken into account for your meal and dietary planning."
+            : "Health information saved! It will not be used in your meal and dietary planning.";
+
+          const color = healthData.include_health ? "green" : "red";
+
+          // Update the result div with the message and color
+          document.getElementById(
+            "health-info-result"
+          ).innerHTML = `<p style="color:${color};">${message}</p>`;
+        });
+
+      // Function to get health information from localStorage
+      function getHealthInfo() {
+        const healthInfo = JSON.parse(localStorage.getItem("healthInfo")) || {};
+        return healthInfo.include_health ? healthInfo : null;
       }
-    };
-    
-    reader.readAsDataURL(file); // Convert image to Base64
-  });
 
       // Attach form submission handlers
       handleFormSubmission(
         "meal-suggestion-form",
         "/api/meal_suggestion",
         "meal-suggestion-result",
-        ["preferences", "dietary_restrictions", "goal"]
+        ["preferences", "dietary_restrictions", "goal", "meal_type", "cuisine"]
       );
       handleFormSubmission(
         "nutrition-analysis-form",
@@ -221,12 +675,20 @@
         "nutrition-analysis-result",
         ["meal"]
       );
+      // Updated form submission for the dietary advice form
       handleFormSubmission(
         "dietary-advice-form",
         "/api/dietary_advice",
         "dietary-advice-result",
-        ["current_diet", "advice_goal"]
+        [
+          "current_diet",
+          "advice_goal",
+          "activity_level",
+          "preferred_meal_types",
+          "allergies",
+        ]
       );
+
       handleFormSubmission(
         "meal-plan-form",
         "/api/meal_plan",
@@ -235,7 +697,10 @@
           "plan_preferences",
           "plan_dietary_restrictions",
           "plan_goal",
-          "duration",
+          "activity_level_plan",
+          "plan_cuisine",
+          "meal_types_plan",
+          "allergies_plan",
         ]
       );
     </script>
