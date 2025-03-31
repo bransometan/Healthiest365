@@ -58,12 +58,19 @@ Visit http://localhost:3000 in your browser.
 - Python with Flask
 - TailwindCSS
 - OpenAI
+- GPT-3.5 Turbo for chat interactions
 
 ## Features
 - AI-Driven Meal Recommendations: Utilize advanced AI algorithms to generate customized meal suggestions based on user preferences, dietary needs, and health objectives.
 - Nutritional Analysis via Search and Image Recognition: Deliver real-time nutritional insights using either search text or uploaded images, supporting users in maintaining a balanced diet and tracking nutrient intake.
-- AI-Guided Dietary Advice: Provide personalized dietary tips aligned with users’ current eating habits and health targets, promoting sustainable lifestyle improvements.
-- AI Enabled Chatbot (TODO)
+- AI-Guided Dietary Advice: Provide personalized dietary tips aligned with users' current eating habits and health targets, promoting sustainable lifestyle improvements.
+- AI-Powered Nutrition Chatbot: 
+  - Real-time nutrition advice and support
+  - Context-aware conversations about healthy eating
+  - Personalized recommendations based on user queries
+  - 24/7 availability for nutrition-related questions
+  - Natural language understanding for easy interaction
+  - Conversation history for contextual responses
 
 Additionally, users can input their health data to receive more tailored nutrition and meal suggestions.
 
