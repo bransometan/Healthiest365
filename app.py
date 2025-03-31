@@ -31,7 +31,53 @@ def generate_chat_response(prompt, system_message="You are a nutrition and meal 
 
 def analyze_food_image(base64_image):
     """Analyze food image using OpenAI's Vision API"""
-    prompt = "Please provide a detailed nutritional analysis of the food in this image, including Carbohydrates, Proteins, Fats, Vitamins, Minerals, Dietary fibre, and Water."
+    prompt = """
+Please analyze the food in this image and provide a detailed nutritional breakdown.
+Also, please summarize the total nutritional values for the entire meal, with calories, protein, fat, carbohydrates, dietary fiber, water, notable vitamins, and minerals.
+
+For each food item, include a healthiness rating under the following criteria:
+- "Healthiest": Low in calories, low in saturated fat, low in sugar, high in fiber, rich in essential vitamins and minerals.
+- "Moderate health option": Moderate levels of calories, fat, and sugar; some beneficial nutrients present.
+- "Consume with caution": High in calories, high in saturated fat, high in sugar, or low in essential nutrients.
+
+Return the analysis in this structured format ONLY with the following information for each food item:
+- Name of the food item
+- Serving size (e.g., 100g or 1 cup)
+- Calories
+- Carbohydrates (total grams and any notable fibers)
+- Protein (grams)
+- Fat (total grams and any saturated fats)
+- Key vitamins (e.g., Vitamin C, B6, K, B1, B12, with amounts and % DV)
+- Key minerals (e.g., Iron, Zinc, Magnesium, Potassium, with amounts and % DV)
+- Water content (approximate grams)
+- Healthiness rating (either "Healthiest", "Moderate health option", or "Consume with caution")
+
+Return in JSON format ONLY with the following structure (Do not include anything else AND Do not wrap the json codes in JSON markers):
+{
+  "introduction": "Introduction text...",
+  "items": [
+    {
+      "name": "Chicken (Boiled, Skinless, 100g)",
+      "serving_size": "100g",
+      "nutrients": [
+        { "name": "Calories", "value": "165 kcal" },
+        { "name": "Protein", "value": "31g" }
+        // More nutrients
+      ],
+      "healthiness_rating": "Healthiest"
+    },
+    // More items
+  ],
+  "summary": [
+    { "name": "Total Calories", "value": "418 kcal" },
+    { "name": "Total Protein", "value": "37g" }
+    // More summary nutrients
+  ]
+}
+"""
+
+
+
 
     response = openai.ChatCompletion.create(
         model="gpt-4o-mini",
@@ -109,7 +155,56 @@ def analyze_nutrition(meal):
    - Dietary considerations
    - Recommendations for balanced consumption
 
-Please provide detailed information for each section."""
+Return in JSON format ONLY with the following structure (Do not include anything else AND Do not wrap the json codes in JSON markers):
+
+{{
+  "macronutrients": {{
+    "proteins": {{
+      "content": "Protein content and benefits",
+      "benefits": "Additional benefits of proteins"
+    }},
+    "carbohydrates": {{
+      "content": "Carbohydrate content and benefits",
+      "benefits": "Additional benefits of carbohydrates"
+    }},
+    "fats": {{
+      "content": "Fat content and types present",
+      "types": "Types of fats present"
+    }}
+  }},
+  "micronutrients": {{
+    "vitamins": [
+      {{
+        "name": "Vitamin A",
+        "benefits": "Benefits of Vitamin A"
+      }},
+      {{
+        "name": "Vitamin C",
+        "benefits": "Benefits of Vitamin C"
+      }}
+    ],
+    "minerals": [
+      {{
+        "name": "Iron",
+        "benefits": "Benefits of Iron"
+      }},
+      {{
+        "name": "Calcium",
+        "benefits": "Benefits of Calcium"
+      }}
+    ]
+  }},
+  "caloric_information": {{
+    "calories_per_serving": "Approximate calories per serving",
+    "portion_size": "Portion size reference"
+  }},
+  "health_benefits": {{
+    "nutritional_advantages": "Key nutritional advantages",
+    "dietary_considerations": "Dietary considerations",
+    "recommendations": "Recommendations for balanced consumption"
+  }}
+}}
+"""
 
     return generate_chat_response(prompt, max_tokens=600)
 
@@ -134,16 +229,16 @@ def provide_dietary_advice(goal, current_diet, activity_level, preferred_meal_ty
 def create_meal_plan(preferences, dietary_restrictions, goal, activity_level, cuisine, meal_types, health_info):
     """Generate a personalized meal plan"""
     base_prompt = (
-        f"Create a detailed one-day meal plan in Singapore with this structure:\n"
-        f"Breakfast (8:00 AM - ABC Food Court):\n"
+        f"Create a detailed one-day meal plan in Singapore with this structure (Note: Location is Singapore's Places):\n"
+        f"Breakfast (8:00 AM - Location):\n"
         f"- Main dish\n"
         f"- Side items\n"
         f"- Nutritional highlights\n\n"
-        f"Lunch (12:30 PM - XYZ Hawker Centre):\n"
+        f"Lunch (12:30 PM - Location):\n"
         f"- Main dish\n"
         f"- Side items\n"
         f"- Nutritional highlights\n\n"
-        f"Dinner (7:00 PM - Local Restaurant):\n"
+        f"Dinner (7:00 PM - Location):\n"
         f"- Main dish\n"
         f"- Side items\n"
         f"- Nutritional highlights\n\n"
