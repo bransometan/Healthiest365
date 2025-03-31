@@ -29,6 +29,33 @@ def generate_chat_response(prompt, system_message="You are a nutrition and meal 
     )
     return response['choices'][0]['message']['content'].strip()
 
+def handle_chat_message(message, conversation_history=None):
+    """Handle chat messages with conversation history"""
+    if conversation_history is None:
+        conversation_history = []
+    
+    # Add the user's message to the conversation history
+    conversation_history.append({"role": "user", "content": message})
+    
+    # Generate response using OpenAI
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a helpful nutrition and meal planning assistant. Provide clear, concise, and accurate information about nutrition, healthy eating, and meal planning. Keep responses friendly and engaging."},
+            *conversation_history
+        ],
+        temperature=0.7,
+        max_tokens=300
+    )
+    
+    # Get the assistant's response
+    assistant_response = response['choices'][0]['message']['content'].strip()
+    
+    # Add the assistant's response to the conversation history
+    conversation_history.append({"role": "assistant", "content": assistant_response})
+    
+    return assistant_response, conversation_history
+
 def analyze_food_image(base64_image):
     """Analyze food image using OpenAI's Vision API"""
     prompt = """
@@ -372,6 +399,25 @@ def image_analysis_api():
         data = request.get_json()
         analysis_result = analyze_food_image(data['image'])
         return jsonify({'nutritional_facts': analysis_result})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/chat', methods=['POST'])
+def chat_api():
+    """API endpoint for chat functionality"""
+    try:
+        data = request.get_json()
+        message = data.get('message', '')
+        conversation_history = data.get('conversation_history', [])
+        
+        if not message:
+            return jsonify({'error': 'Message is required'}), 400
+            
+        response, updated_history = handle_chat_message(message, conversation_history)
+        return jsonify({
+            'response': response,
+            'conversation_history': updated_history
+        })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
