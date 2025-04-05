@@ -1,10 +1,10 @@
-# Healthiest365 - SG AI Nutritionist (Healthy365 Extension)
+# HealthiestSG - SG AI Nutritionist (HealthySG Extension)
 
-Healthiest365 is an intelligent nutritionist extension of the Healthy365 app, designed to promote healthier eating habits with the help of advanced AI technology. This AI-powered solution offers personalized meal suggestions, nutritional analysis, and advices tailored to individual health goals, preferences, and dietary restrictions. Healthiest365 is not just about food, it's about creating a balanced, healthy way of living that supports long-term well-being, perfectly complementing the Healthy365 app ecosystem.
+HealthiestSG is an intelligent nutritionist extension of the HealthySG app, designed to promote healthier eating habits with the help of advanced AI technology. This AI-powered solution offers personalized meal suggestions, nutritional analysis, and advices tailored to individual health goals, preferences, and dietary restrictions. HealthiestSG is not just about food, it's about creating a balanced, healthy way of living that supports long-term well-being, perfectly complementing the HealthySG app ecosystem.
 
 ## Project Overview
 
-Healthiest365, a 24/25 Sem 2 NUS IS4261 Project by Group 2, is designed to revolutionize daily nutrition and promote a healthier lifestyle through AI-powered meal nutritionist. This project aims to provide personalized meal suggestions, in-depth nutritional insights, and tailored advice, making healthy eating accessible and convenient for everyone. 
+HealthiestSG, a 24/25 Sem 2 NUS IS4261 Project by Group 2, is designed to revolutionize daily nutrition and promote a healthier lifestyle through AI-powered meal nutritionist. This project aims to provide personalized meal suggestions, in-depth nutritional insights, and tailored advice, making healthy eating accessible and convenient for everyone. 
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -28,8 +28,8 @@ Before you start, make sure you have the following installed:
 
 ```bash
 # Clone the repository
-git clone https://github.com/bransometan/Healthiest365.git
-cd Healthiest365
+git clone https://github.com/bransometan/HealthiestSG.git
+cd HealthiestSG
 
 # Install dependencies
 pip install -r requirements.txt
