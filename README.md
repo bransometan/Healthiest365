@@ -1,4 +1,4 @@
-# HealthiestSG - SG AI Nutritionist (HealthySG Extension)
+# HealthiestSG - SG AI Nutritionist (Healthy365 Extension)
 
 HealthiestSG is an intelligent nutritionist extension of the Healthy365 app, designed to promote healthier eating habits with the help of advanced AI technology. This AI-powered solution offers personalized meal suggestions, nutritional analysis, and advices tailored to individual health goals, preferences, and dietary restrictions. HealthiestSG is not just about food, it's about creating a balanced, healthy way of living that supports long-term well-being, perfectly complementing the Healthy365 app ecosystem.
 
